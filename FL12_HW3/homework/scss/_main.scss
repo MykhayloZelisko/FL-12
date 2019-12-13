@@ -115,7 +115,7 @@ button {
         z-index: 1;
 
         &::after {
-            @include marker($height:55px, $width:223px, $bottom:10px, $left:746px);
+            @include marker($height:55px, $width:223px, $bottom:10px, $left:773px);
         }
     }
 
