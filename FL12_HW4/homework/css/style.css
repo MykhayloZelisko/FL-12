@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #777;
+    font-family: 'Merriweather', serif;
+}
+
+header {
+    background-image: url("../img/home-bg.jpg");
+    background-size: cover;
+    background-position: top;
+    height: 100vh;
+}
+
+.header-content {
+    text-align: center;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    height: 86px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #ffffff;
+}
+
+.logo a {
+    color: #777;
+    text-decoration: none;
+    letter-spacing: 4px;
+    font-size: 19px;
+}
+
+.menu a {
+    color: #777;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 14px;
+    padding: 0 20px;
+}
+
+.menu a:hover {
+    color: #bfba55;
+}
+
+.menu {
+    margin-left: 120px;
+}
+
+.header-content h1 {
+    color: #ffffff;
+    padding-top: 410px;
+    font-size: 64px;
+}
+
+.header-content h6 {
+    margin: 17px 0 50px 0;
+    font-size: 12px;
+    color: #bfba55;
+    letter-spacing: 2px;
+}
+
+.btn {
+    background-color: #ffffff;
+    padding: 16px 24px;
+    border-radius: 50px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    border: none;
+}
+
+main {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.post {
+    margin: 80px 0;
+}
+
+.post-img img {
+    max-width: 100%;
+}
+
+.post-article {
+    margin: 40px 0;
+}
+
+.post-article h2 {
+    color: #000000;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.post-article p {
+    line-height: 26px;
+    font-size: 14px;
+    margin: 20px 0 35px 0;
+
+}
+
+.info img {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.info p {
+    padding: 0 20px;
+    font-size: 13px;
+}
+
+.info span {
+    padding: 20px;
+}
+
+.btn-cont {
+    border: solid 1px #777;
+    font-size: 14px;
+    color: #777;
+    font-weight: bold;
+}
+
+hr {
+    color: #777;
+}
+
+footer {
+    background-color: #000000;
+    padding: 100px 0 100px 0;
+}
+
+footer h2 {
+    color: #ffffff;
+}
+
+.footer-cont div {
+    width: 45%;
+}
+
+.footer-cont {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    margin: 0 auto;
+}
+
+footer p {
+    font-size: 14px;
+    line-height: 200%;
+}
