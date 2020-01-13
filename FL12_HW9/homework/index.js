@@ -1,22 +1,22 @@
-function convert(arr) {
+function convert() {
     const convertArr = [];
 
-    arr.forEach(el => {
-        switch (typeof el) {
+    for (let i = 0; i < arguments.length; i++) {
+        switch (typeof arguments[i]) {
             case 'string': {
-                convertArr.push(Number(el));
+                convertArr.push(Number(arguments[i]));
                 break;
             }
             case 'number': {
-                convertArr.push(String(el));
+                convertArr.push(String(arguments[i]));
                 break;
             }
             default: {
-                convertArr.push(el);
+                convertArr.push(null);
                 break;
             }
         }
-    });
+    }
 
     return convertArr;
 }
