@@ -1,0 +1,64 @@
+@import 'variables.less';
+
+.navbar {
+    .nav-link {
+        font-weight: 600;
+    }
+
+    .nav-link.nav-item.active {
+        background-color: @color-blue;
+        color: @color-white;
+    }
+}
+
+.class-description__header,
+.class-description__title,
+.related-classes__header {
+    color: @color-blue;
+    padding-bottom: 8px;
+    font-weight: 600;
+}
+
+.class-description__header,
+.related-classes__header {
+    border-bottom: solid 1.5px @color-blue;
+}
+
+.card-color(@color) {
+    border: solid thin @color;
+    //border-radius: 0;
+
+    .card__text {
+        background-color: @color;
+        color: @color-white;
+    }
+}
+
+.related-classes {
+    &__link:hover {
+        text-decoration: none;
+    }
+
+    &__cardio {
+        .card-color(@color-red);
+    }
+
+    &__fitness {
+        .card-color(@color-blue);
+    }
+
+    &__zumba {
+        .card-color(@color-orange);
+    }
+
+    &__bootcamp {
+        .card-color(@color-green);
+    }
+}
+
+.card {
+    &__text {
+        padding: 5px 0;
+        font-weight: bold;       
+    }
+}
