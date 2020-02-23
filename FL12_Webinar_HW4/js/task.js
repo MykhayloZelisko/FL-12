@@ -22,17 +22,10 @@ function addUniqueId(obj) {
 // task 4
 
 function regroupObject(obj) {
-    const newObj = {};
-    const {id, age, university} = obj.details;
-    newObj.university = university;
-    newObj.details = {
-        id = id,
-        firstName = obj.name,
-        age = age
-    }
-
-    return newObj;
-}
+    const {name, ...rest} = obj;
+    const {id, age, university} = rest.details;
+    return {university: university, user: {age: age, firstName: name, id: id}};
+  }
 
 // task 5
 
@@ -50,10 +43,35 @@ function hideNumber(str) {
 
 // task 7
 
-
+function add(a, b = new Error('Missing property')) {
+    if (arguments.length < 2) {
+        throw b
+    } else {
+        return a + b
+    }    
+}
 
 // task 8
 
-
+function getMyReposProm(url) {
+    fetch(url)
+      .then(response => response.json())
+      .then(myInfo => {
+        const myRepos = myInfo.map(item => item.name);
+        console.log(myRepos);
+      });
+  }
 
 // task 9
+
+async function getMyReposAs(url) {
+    try {
+      const request = await fetch(url);
+      const myInfo = await request.json();
+      const myRepos = await myInfo.map(item => item.name)
+      console.log(myRepos);
+    }
+    catch (error) {
+      console.log(`ERROR: ${error.stack}`);
+    }
+  }
