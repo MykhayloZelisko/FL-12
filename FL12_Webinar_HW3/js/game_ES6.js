@@ -29,29 +29,26 @@ class Card {
 
 const _cards = Symbol('cards');
 const _count = Symbol('count');
-const _createCards = Symbol('createCards');
 
 class Deck {
     constructor() {
-        this[_cards] = this[_createCards]();
+        this[_cards] = (function() {
+            const suit = ['hearts', 'diamonds', 'clubs', 'spades'];
+            let cards = [];
+    
+            for (let i = 1; i <= 13; i++) {
+                for (let j = 0; j <= 3; j++) {
+                    cards.push(new Card(i, suit[j]));
+                }
+            }
+    
+            return cards;
+        })();
         this[_count] = this[_cards].length;
     }
 
     get count() {
         return this[_count]
-    }
-
-    [_createCards]() {
-        const suit = ['hearts', 'diamonds', 'clubs', 'spades'];
-        let cards = [];
-
-        for (let i = 1; i <= 13; i++) {
-            for (let j = 0; j <= 3; j++) {
-                cards.push(new Card(i, suit[j]));
-            }
-        }
-
-        return cards;
     }
 
     drawn(n) {
@@ -63,7 +60,7 @@ class Deck {
         let tempCard;
         let tempIndex;
         for (let i = 0; i < this[_count]; i++) {
-            tempIndex = Math.floor(Math.random() * (this[_count] + 1));
+            tempIndex = Math.floor(Math.random() * this.count);
             tempCard = this[_cards][tempIndex];
             this[_cards][tempIndex] = this[_cards][i];
             this[_cards][i] = tempCard;
@@ -74,9 +71,9 @@ class Deck {
 const _wins = Symbol('wins');
 
 class Player {
-    constructor(name, deck) {
+    constructor(name) {
         this.name = name;
-        this.deck = deck;
+        this.deck = null;
         this[_wins] = 0;
     }
 
@@ -85,19 +82,22 @@ class Player {
     }
 
     addWin() {
-        this[_wins] += 1;
+        ++this[_wins];
     }
 
     static Play(playerOne, playerTwo) {
+        playerOne.deck = new Deck();
+        playerTwo.deck = new Deck();
+    
         playerOne.deck.shuffle();
         playerTwo.deck.shuffle();
+
         while (playerOne.deck.count > 0) {
             let cardOne = playerOne.deck.drawn(1);
             let cardTwo = playerTwo.deck.drawn(1);
             let result = Card.Compare(cardOne[0], cardTwo[0]);
 
-            // console.log(`${cardOne[0].toString()} vs ${cardTwo[0].toString()}`);
-            // console.log(cardOne[0], cardTwo[0]);
+            console.log(`${cardOne[0].toString()} vs ${cardTwo[0].toString()}`);
 
             if (result === 1) {
                 playerOne.addWin()
@@ -116,7 +116,7 @@ class Player {
     }
 }
 
-const playerOne = new Player('Jack', new Deck());
-const playerTwo = new Player('Paul', new Deck());
+const playerOne = new Player('Jack');
+const playerTwo = new Player('Paul');
 
 Player.Play(playerOne, playerTwo);
