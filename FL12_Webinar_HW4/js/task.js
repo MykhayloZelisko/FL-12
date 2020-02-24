@@ -58,6 +58,9 @@ function getMyReposProm(url) {
         .then(myInfo => {
             const myRepos = myInfo.map(item => item.name).sort();
             console.log(myRepos);
+        })
+        .catch(error => {
+            console.log(`${error.name}: ${error.message}`);
         });
 }
 
@@ -67,10 +70,10 @@ async function getMyReposAs(url) {
     try {
         const request = await fetch(url);
         const myInfo = await request.json();
-        const myRepos = await myInfo.map(item => item.name).sort();
+        const myRepos = myInfo.map(item => item.name).sort();
         console.log(myRepos);
     }
     catch (error) {
-        console.log(`ERROR: ${error.stack}`);
+        console.log(`${error.name}: ${error.message}`);
     }
 }
