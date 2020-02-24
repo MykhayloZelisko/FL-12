@@ -1,14 +1,16 @@
 function Card(rank, suit) {
     this.rank = rank;
-    this.suit = suit;
-    const rankList = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
+    const _suit = suit;
+    const _rankList = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
+    const _isFaceCard = !!(this.rank === 1 || this.rank > 10)
     Object.defineProperty(this, 'isFaseCard', {
-        value: !!(this.rank === 1 || this.rank > 10),
-        writable: false
+        get: function() {
+            return _isFaceCard
+        }
     });
     
     this.toString = function() {
-        return `${rankList[this.rank - 1]} of ${this.suit}`
+        return `${_rankList[this.rank - 1]} of ${_suit}`
     }
 }
 
@@ -23,7 +25,7 @@ Card.Compare = function(cardOne, cardTwo) {
 }
 
 function Deck() {
-    const cards = (function() {
+    const _cards = (function() {
         const suit = ['hearts', 'diamonds', 'clubs', 'spades'];
         let cards = [];
 
@@ -35,19 +37,17 @@ function Deck() {
 
         return cards;
     })();
+    let _count = _cards.length;
 
     Object.defineProperty(this, 'count', {
-        value: cards.length,
-        writable: false
+        get: function() {
+            return _count
+        }
     });
 
     this.drawn = function(n) {
-        Object.defineProperty(this, 'count', {
-            writable: true,
-            value: this.count - n,
-            writable: false
-        });
-        return cards.splice(cards.length - n, n);
+        _count -= n;
+        return _cards.splice(_cards.length - n, n);
     }
 
     this.shuffle = function() {
@@ -55,31 +55,32 @@ function Deck() {
         let tempIndex;
         for (let i = 0; i < this.count; i++) {
            tempIndex = Math.floor(Math.random() * (this.count + 1));
-           tempCard = cards[tempIndex];
-           cards[tempIndex] = cards[i];
-           cards[i] = tempCard;
+           tempCard = _cards[tempIndex];
+           _cards[tempIndex] = _cards[i];
+           _cards[i] = tempCard;
         }
     }
 }
 
-function Player(name, deck) {
+function Player(name) {
     this.name = name;
-    this.deck = deck;
+    this.deck = null;
+    let _wins = 0
     Object.defineProperty(this, 'wins', {
-        value: 0,
-        writable: false
+        get: function() {
+            return _wins
+        }
     });
 
     this.addWin = function() {
-        Object.defineProperty(this, 'wins', {
-            writable: true,
-            value: this.wins + 1,
-            writable: false
-        });
+        ++_wins
     }
 }
 
 Player.Play = function(playerOne, playerTwo) {
+    playerOne.deck = new Deck();
+    playerTwo.deck = new Deck();
+
     playerOne.deck.shuffle();
     playerTwo.deck.shuffle();
 
@@ -89,6 +90,7 @@ Player.Play = function(playerOne, playerTwo) {
         let result = Card.Compare(cardOne[0], cardTwo[0]);
 
         console.log(`${cardOne[0].toString()} vs ${cardTwo[0].toString()}`);
+        console.log(result);
 
         if (result === 1) {
             playerOne.addWin()
