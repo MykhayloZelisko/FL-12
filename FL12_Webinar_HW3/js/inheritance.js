@@ -8,7 +8,7 @@ class Employee {
         this.birthday = emp.birthday;
         this.salary = emp.salary;
         this.position = emp.position;
-        this.departament = emp.departament;
+        this.department = emp.department;
         Employee._EMPLOYEES.push(this);
     }
 
@@ -30,7 +30,7 @@ class Employee {
     }
 
     changeDepartment(newDepartment) {
-        this.departament = newDepartment;
+        this.department = newDepartment;
     }
 
     changePosition(newPosition) {
@@ -50,8 +50,8 @@ class Employee {
             this.changePosition(benefits.position);
         }
         
-        if (benefits.departament) {
-            this.changeDepartment(benefits.departament);
+        if (benefits.department) {
+            this.changeDepartment(benefits.department);
         }
 
         console.log('Yoohoo!');
@@ -66,8 +66,8 @@ class Employee {
             this.changePosition(punishment.position);
         }
         
-        if (punishment.departament) {
-            this.changeDepartment(punishment.departament);
+        if (punishment.department) {
+            this.changeDepartment(punishment.department);
         }
 
         console.log('Damn!');
@@ -101,8 +101,8 @@ class Manager extends Employee {
     get managedEmployees() {
         let result = [];
         for (let i = 0; i < Employee.EMPLOYEES.length; i++) {
-            if (Employee.EMPLOYEES[i].departament = this.departament && Employee.EMPLOYEES[i].position !== 'manager') {
-                result.push.Employee.EMPLOYEES[i];
+            if (Employee.EMPLOYEES[i].department === this.department && Employee.EMPLOYEES[i].position !== 'manager') {
+                result.push(Employee.EMPLOYEES[i]);
             }
         }
 
@@ -128,24 +128,20 @@ class SalesManager extends Manager {
 
 // --------- task 3 --------------------------------------
 
-function promoter(manager) {
-    return {
-        promote(id, benefits) {
-            manager.managedEmployees.find(x => x.id === id).getPromoted(benefits);
-        }
+const promoter = {
+    promote(id, benefits) {
+        this.managedEmployees.find((empl) => empl.id === id).getPromoted(benefits);
     }
 }
 
-function demoter(manager) {
-    return {
-        demote(id, punishment) {
-            manager.managedEmployees.find(x => x.id === id).getDemoted(punishment);
-        }
+const demoter = {
+    demote(id, punishment) {
+        this.managedEmployees.find((empl) => empl.id === id).getDemoted(punishment);
     }
 }
 
-function ManagerPro(manager) {
-    return Object.assign(manager, promoter(manager), demoter(manager));
+function ManagerPro(manager, ...args) {
+    return Object.assign(manager, ...args);
 }
 
 // -------------------------------------------------------
@@ -173,7 +169,7 @@ const blueCollarWorkerOne = new BlueCollarWorker({
     birthday: '16/08/1985',
     salary: 4000,
     position: 'office worker',
-    departament: 'sales'
+    department: 'sales'
 });
 
 const blueCollarWorkerTwo = new BlueCollarWorker({
@@ -183,5 +179,5 @@ const blueCollarWorkerTwo = new BlueCollarWorker({
     birthday: '11/07/1986',
     salary: 4000,
     position: 'office worker',
-    departament: 'hr'
+    department: 'hr'
 });
