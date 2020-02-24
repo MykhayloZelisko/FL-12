@@ -19,7 +19,7 @@ class Card {
     static Compare(cardOne, cardTwo) {
         if (cardOne.rank > cardTwo.rank) {
             return 1
-        } else if (cardOne.rank > cardTwo.rank) {
+        } else if (cardOne.rank < cardTwo.rank) {
             return -1
         } else {
             return 0

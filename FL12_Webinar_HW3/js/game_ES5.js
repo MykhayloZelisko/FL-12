@@ -17,7 +17,7 @@ function Card(rank, suit) {
 Card.Compare = function(cardOne, cardTwo) {
     if (cardOne.rank > cardTwo.rank) {
         return 1
-    } else if (cardOne.rank > cardTwo.rank) {
+    } else if (cardOne.rank < cardTwo.rank) {
         return -1
     } else {
         return 0
@@ -90,7 +90,6 @@ Player.Play = function(playerOne, playerTwo) {
         let result = Card.Compare(cardOne[0], cardTwo[0]);
 
         console.log(`${cardOne[0].toString()} vs ${cardTwo[0].toString()}`);
-        console.log(result);
 
         if (result === 1) {
             playerOne.addWin()
@@ -108,7 +107,7 @@ Player.Play = function(playerOne, playerTwo) {
     }
 }
 
-const playerOne = new Player('Jack', new Deck());
-const playerTwo = new Player('Paul', new Deck());
+const playerOne = new Player('Jack');
+const playerTwo = new Player('Paul');
 
 Player.Play(playerOne, playerTwo);
