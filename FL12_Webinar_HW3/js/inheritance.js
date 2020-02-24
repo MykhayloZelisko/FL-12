@@ -101,7 +101,7 @@ class Manager extends Employee {
     get managedEmployees() {
         let result = [];
         for (let i = 0; i < Employee.EMPLOYEES.length; i++) {
-            if (Employee.EMPLOYEES[i].departament = this.departament) {
+            if (Employee.EMPLOYEES[i].departament = this.departament && Employee.EMPLOYEES[i].position !== 'manager') {
                 result.push.Employee.EMPLOYEES[i];
             }
         }
@@ -125,3 +125,63 @@ class SalesManager extends Manager {
         this.changeDepartment('sales');
     }
 }
+
+// --------- task 3 --------------------------------------
+
+function promoter(manager) {
+    return {
+        promote(id, benefits) {
+            manager.managedEmployees.find(x => x.id === id).getPromoted(benefits);
+        }
+    }
+}
+
+function demoter(manager) {
+    return {
+        demote(id, punishment) {
+            manager.managedEmployees.find(x => x.id === id).getDemoted(punishment);
+        }
+    }
+}
+
+function ManagerPro(manager) {
+    return Object.assign(manager, promoter(manager), demoter(manager));
+}
+
+// -------------------------------------------------------
+
+const salesManager = new SalesManager({
+    id: 1,
+    firstName: 'John',
+    lastName: 'Doe',
+    birthday: '10/04/1994',
+    salary: 5000
+});
+
+const hrManager = new HRManager({
+    id: 2,
+    firstName: 'Bob',
+    lastName: 'Doe',
+    birthday: '21/09/1991',
+    salary: 6000
+});
+
+const blueCollarWorkerOne = new BlueCollarWorker({
+    id: 3,
+    firstName: 'Mary',
+    lastName: 'Doe',
+    birthday: '16/08/1985',
+    salary: 4000,
+    position: 'office worker',
+    departament: 'sales'
+});
+
+const blueCollarWorkerTwo = new BlueCollarWorker({
+    id: 4,
+    firstName: 'Jane',
+    lastName: 'Doe',
+    birthday: '11/07/1986',
+    salary: 4000,
+    position: 'office worker',
+    departament: 'hr'
+});
