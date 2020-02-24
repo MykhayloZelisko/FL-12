@@ -54,7 +54,7 @@ function Deck() {
         let tempCard;
         let tempIndex;
         for (let i = 0; i < this.count; i++) {
-           tempIndex = Math.floor(Math.random() * (this.count + 1));
+           tempIndex = Math.floor(Math.random() * this.count);
            tempCard = _cards[tempIndex];
            _cards[tempIndex] = _cards[i];
            _cards[i] = tempCard;
