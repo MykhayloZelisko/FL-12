@@ -56,7 +56,7 @@ function getMyReposProm(url) {
     fetch(url)
         .then(response => response.json())
         .then(myInfo => {
-            const myRepos = myInfo.map(item => item.name);
+            const myRepos = myInfo.map(item => item.name).sort();
             console.log(myRepos);
         });
 }
@@ -67,7 +67,7 @@ async function getMyReposAs(url) {
     try {
         const request = await fetch(url);
         const myInfo = await request.json();
-        const myRepos = await myInfo.map(item => item.name)
+        const myRepos = await myInfo.map(item => item.name).sort();
         console.log(myRepos);
     }
     catch (error) {
