@@ -2,11 +2,7 @@
 
 let fetchedUsers;
 
-document.querySelector('#userGetterBtn').addEventListener('click', (e)=> {
-  getUsers('https://jsonplaceholder.typicode.com/users');
-  e.target.setAttribute('disabled', 'disabled');
-})
-
+getUsers('https://jsonplaceholder.typicode.com/users');
 
 //Requests
 function getUsers(url) {
@@ -335,6 +331,7 @@ function updateEventListeners() {
 function openModal() {
   document.getElementById('modal').style.display = 'block';
 }
+
 function closeModal() {
   document.getElementById('modal').style.display = 'none';
 }
