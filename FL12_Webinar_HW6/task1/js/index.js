@@ -45,7 +45,7 @@ $('.list').css({'font-size' : '18px'});
   $('#list-3 li:gt(5)').css({'color' : '#ccc'});
 
 // show ul which is parent
-$('ul:parent').css({'display' : 'block'}); //???
+$('ul:parent').css({'border' : 'solid 1px black'});
 
 // for li wich has 'em' add red color
 $('li:has(em)').css({'color' : 'red'});
@@ -82,7 +82,7 @@ $('input[name$="age"]').css({'width' : '80px'});
 $('input[name^="my"]').css({'width' : '120px'});
 
 // console.log checked checkbox
-console.log($("input[type='checkbox'][checked]"));//???
+console.log($("input[type='checkbox'][checked]"));  //???
 
 
 // show all images with a cat
@@ -98,5 +98,5 @@ $('img[src*="cat"]').show();
 $('.mbox').eq(3).css({'padding-top' : '50px'});
 
 // for first div wraper for img set float left and border red
-$(".mbox>img:first-child").css({"float": "left", "border": "3px solid red"}); //???
+$(".mbox>img:first-child").css({"float": "left", "border": "3px solid red"});  //???
 
