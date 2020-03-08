@@ -1,0 +1,74 @@
+.play-buttons,
+#reset {
+  -moz-border-radius:9px;
+  -webkit-border-radius:9px;
+  border-radius:9px;
+  display:inline-block;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:bold;
+  padding:10px 3px;
+  text-decoration:none;
+  width: 120px;
+  margin: 5px;
+}
+
+#rock,
+#paper,
+#scissors {
+  width: 120px;
+}
+
+.play-buttons {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, $play-button-dark), color-stop(1, $play-button-light));
+  background:-moz-linear-gradient(top, $play-button-dark 5%, $play-button-light 100%);
+  background:-webkit-linear-gradient(top, $play-button-dark 5%, $play-button-light 100%);
+  background:-o-linear-gradient(top, $play-button-dark 5%, $play-button-light 100%);
+  background:-ms-linear-gradient(top, $play-button-dark 5%, $play-button-light 100%);
+  background:linear-gradient(to bottom, $play-button-dark 5%, $play-button-light 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$play-button-dark', endColorstr='$play-button-light',GradientType=0);
+  background-color:$play-button-dark;
+  border:1px solid $play-button-border;
+  color:$text-color;
+}
+
+.play-buttons:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, $play-button-light), color-stop(1, $play-button-dark));
+  background:-moz-linear-gradient(top, $play-button-light 5%, $play-button-dark 100%);
+  background:-webkit-linear-gradient(top, $play-button-light 5%, $play-button-dark 100%);
+  background:-o-linear-gradient(top, $play-button-light 5%, $play-button-dark 100%);
+  background:-ms-linear-gradient(top, $play-button-light 5%, $play-button-dark 100%);
+  background:linear-gradient(to bottom, $play-button-light 5%, $play-button-dark 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$play-button-light', endColorstr='$play-button-dark',GradientType=0);
+  background-color:$play-button-light;
+}
+
+.play-buttons:active,
+.reset:active {
+  position:relative;
+  top:1px;
+}
+
+#reset {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, $reset-button-light), color-stop(1, $reset-button-dark));
+  background:-moz-linear-gradient(top, $reset-button-light 5%, $reset-button-dark 100%);
+  background:-webkit-linear-gradient(top, $reset-button-light 5%, $reset-button-dark 100%);
+  background:-o-linear-gradient(top, $reset-button-light 5%, $reset-button-dark 100%);
+  background:-ms-linear-gradient(top, $reset-button-light 5%, $reset-button-dark 100%);
+  background:linear-gradient(to bottom, $reset-button-light 5%, $reset-button-dark 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$reset-button-light', endColorstr='$reset-button-dark',GradientType=0);
+  background-color:$reset-button-light;
+  border:1px solid $reset-button-border;
+  color:$text-color;
+}
+
+#reset:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, $reset-button-dark), color-stop(1, $reset-button-light));
+  background:-moz-linear-gradient(top, $reset-button-dark 5%, $reset-button-light 100%);
+  background:-webkit-linear-gradient(top, $reset-button-dark 5%, $reset-button-light 100%);
+  background:-o-linear-gradient(top, $reset-button-dark 5%, $reset-button-light 100%);
+  background:-ms-linear-gradient(top, $reset-button-dark 5%, $reset-button-light 100%);
+  background:linear-gradient(to bottom, $reset-button-dark 5%, $reset-button-light 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$reset-button-dark', endColorstr='$reset-button-light',GradientType=0);
+  background-color:$reset-button-dark;
+}
