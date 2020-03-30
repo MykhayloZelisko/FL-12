@@ -1,0 +1,35 @@
+.field {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 75%;
+  cursor: pointer;
+}
+
+.cell-x, .cell-o {
+  cursor: default;
+}
+
+.cell.win {
+  background-color: red;
+}
+
+.cell.draw {
+  background-color: rgb(224, 224, 103);
+}
+
+.cell:nth-child(-n + 3) {
+  border-top: 2px solid black;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: 2px solid black;
+}

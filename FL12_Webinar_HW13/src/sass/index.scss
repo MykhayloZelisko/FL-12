@@ -1,0 +1,62 @@
+@import "./field";
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 24px;
+}
+
+.container {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.scores {
+  display: flex;
+  justify-content: space-around;
+}
+
+.score, .round-result {
+  text-align: center;
+  padding: 1rem;
+  font-size: 24px;
+}
+
+.score {
+  width: 150px;
+}
+
+.score-current {
+  text-decoration: underline;
+}
+
+.player {
+  font-size: 24px;
+}
+
+.buttons {
+  margin-top: 1rem;
+  text-align: center;
+
+  .new-game, .clear {
+    font-size: 24px;
+  }
+}
+
+.cell {
+  font-size: 100px;
+  line-height: 75px;
+  text-align: center;
+}
+
+.round-result {
+  height: 60px;
+}
+
+.score-value {
+  text-align: center;
+  font-size: 24px;
+}
